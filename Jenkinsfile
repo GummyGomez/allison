@@ -3,16 +3,19 @@ pipeline {
     stages {
         stage('Preparing the environment') {
             steps {
+                sh 'El "hostname es $HOSTNAME y el ususarios es $USER"' 
                 sh 'python3 -m pip install -r requirements.txt'
             }
         }
         stage('Code Quality') {
             steps {
+                sh 'El "hostname es $HOSTNAME y el ususarios es $USER"'
                 sh 'python3 -m pylint app.py'
             }
         }
         stage('Tests') {
             steps {
+                sh 'El "hostname es $HOSTNAME y el ususarios es $USER"'
                 sh 'python3 -m pytest'
             }
         }
@@ -24,6 +27,7 @@ pipeline {
               }
           }
           steps {
+              sh 'El "hostname es $HOSTNAME y el ususarios es $USER"'
               sh 'docker build https://github.com/AlissonMMenezes/Chapter10.git -t chapter10:latest'
           }
       }        
